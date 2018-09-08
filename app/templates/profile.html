@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Profile page</h3>
+<p>
+{% if current_user.is_authenticated %}
+  Logged in as {{ current_user.username }}!
+  {% else %}
+  You have to login to see this page
+{% endif %}
+</p>
+{% endblock %}

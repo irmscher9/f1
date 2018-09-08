@@ -1,0 +1,32 @@
+<html>
+    <head>
+        {% if title %}
+        <title>f1 - {{ title }}</title>
+        {% else %}
+        <title>f1</title>
+        {% endif %}
+    </head>
+    <body>
+        <div><h1>F1</h1>
+            <a href="{{ url_for('index') }}">Home</a>  //
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>  //
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a>  //
+            {% endif %}
+            <!--<a href="{{ url_for('login') }}">Login</a>  //-->
+            <a href="{{ url_for('signup') }}">Sign Up</a>  //
+            <a href="{{ url_for('about') }}">About</a>  //
+            <a href="{{ url_for('users') }}">Users</a>  //
+            <a href="{{ url_for('profile') }}">Profile</a>
+        </div>
+        <div><p>
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+            <p style="color:orange">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+        </p></div>
+    {% block content %}{% endblock %}
+    </body>
+</html>
